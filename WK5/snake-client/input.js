@@ -1,18 +1,20 @@
+let connection;
+
 const handleUserInput = key => {
-  if (key === "w" || key === "W") {
-    console.log("Move: up");
+  if (key === "w") {
+    connection.write("Move: up");
   }
 
-  if (key === "a" || key === "A") {
-    console.log("Move: left");
+  if (key === "a") {
+    connection.write("Move: left");
   }
 
-  if (key === "s" || key === "S") {
-    console.log("Move: down");
+  if (key === "s") {
+    connection.write("Move: down");
   }
 
-  if (key === "d" || key === "D") {
-    console.log("Move: right");
+  if (key === "d") {
+    connection.write("Move: right");
   }
 
   if (key === "\u0003") {
@@ -20,7 +22,10 @@ const handleUserInput = key => {
   }
 };
 
-const setupInput = () => {
+
+const setupInput = (conn) => {
+  connection = conn;
+
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
@@ -30,5 +35,6 @@ const setupInput = () => {
 
   return stdin;
 };
+
 
 module.exports = { setupInput };
