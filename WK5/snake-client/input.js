@@ -1,22 +1,14 @@
 let connection;
 
-const { MESSAGES, MOVE_KEYS } = require("./constants");
+const { SPECIAL_KEYS } = require("./constants");
 
 const handleUserInput = key => {
   if (key === "\u0003") {
     process.exit();
   }
 
-  for (const mk in MOVE_KEYS) {
-    if (key === mk) {
-      connection.write(MOVE_KEYS[mk]);
-    }
-  }
-
-  for (const m in MESSAGES) {
-    if (key === m) {
-      connection.write(MESSAGES[m]);
-    }
+  if (SPECIAL_KEYS[key]) {
+    connection.write(SPECIAL_KEYS[key]);
   }
 };
 

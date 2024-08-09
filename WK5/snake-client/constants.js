@@ -1,7 +1,7 @@
 const IP = "localhost";
 const PORT = 50541;
 
-const MESSAGES = {
+const SPECIAL_KEYS = {
   i: "Say: Hisssss",
   I: "Say: Hisssss",
   p: "Say: It's sithering time!",
@@ -10,9 +10,7 @@ const MESSAGES = {
   O: "Say: SSSSSsssss",
   l: "Say: Making hissstory!",
   L: "Say: Making hissstory!",
-};
-
-const MOVE_KEYS = {
+  
   w: "Move: up",
   W: "Move: up",
   a: "Move: left",
@@ -26,6 +24,5 @@ const MOVE_KEYS = {
 module.exports = {
   IP,
   PORT,
-  MESSAGES,
-  MOVE_KEYS,
+  SPECIAL_KEYS,
 };
