@@ -1,40 +1,22 @@
 let connection;
 
+const { MESSAGES, MOVE_KEYS } = require("./constants");
+
 const handleUserInput = key => {
-  if (key === "w" || key === "W") {
-    connection.write("Move: up");
-  }
-
-  if (key === "a" || key === "A") {
-    connection.write("Move: left");
-  }
-
-  if (key === "s" || key === "S") {
-    connection.write("Move: down");
-  }
-
-  if (key === "d" || key === "D") {
-    connection.write("Move: right");
-  }
-
   if (key === "\u0003") {
     process.exit();
   }
 
-  if (key === "p" || key === "P") {
-    connection.write("Say: It's sithering time!");
+  for (const mk in MOVE_KEYS) {
+    if (key === mk) {
+      connection.write(MOVE_KEYS[mk]);
+    }
   }
 
-  if (key === "o" || key === "O") {
-    connection.write("Say: SSSSSsssss");
-  }
-
-  if (key === "i" || key === "I") {
-    connection.write("Say: Hisssss");
-  }
-
-  if (key === "l" || key === "L") {
-    connection.write("Say: Making hissstory!");
+  for (const m in MESSAGES) {
+    if (key === m) {
+      connection.write(MESSAGES[m]);
+    }
   }
 };
 
