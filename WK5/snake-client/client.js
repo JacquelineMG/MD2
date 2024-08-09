@@ -1,6 +1,12 @@
 const net = require("net");
 const { IP, PORT } = require("./constants");
 
+let initials = "JMG";
+
+if (process.argv[2]) {
+  initials = process.argv[2];
+}
+
 const connect = () => {
   const conn = net.createConnection({
     host: IP,
@@ -11,7 +17,7 @@ const connect = () => {
 
   conn.on("connect", () => {
     console.log("You are connected!");
-    conn.write("Name: JMG");
+    conn.write(`Name: ${initials}`);
   });
 
   conn.on("data", (data) => {
