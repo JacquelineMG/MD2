@@ -1,7 +1,7 @@
 const net = require("net");
 const { IP, PORT } = require("./constants");
 
-let initials = "JMG";
+let initials = "---";
 
 if (process.argv[2]) {
   initials = process.argv[2];
