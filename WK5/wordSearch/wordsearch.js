@@ -3,6 +3,8 @@ const wordSearch = (letters, word) => {
   for (let l of horizontalJoin) {
     if (l.includes(word)) return true;
   }
+  return false;
 };
+
 
 module.exports = wordSearch;
