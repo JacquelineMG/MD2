@@ -21,7 +21,33 @@ const wordSearch = (letters, word) => {
     if (l.includes(word)) return true;
   }
 
+  const horReverse = [];
+  for (let l of letters) {
+    horReverse.push(l.reverse());
+  }
+
+  const horReverseJoin = horReverse.map(ls => ls.join(''));
+  for (let l of horReverseJoin) {
+    if (l.includes(word)) return true;
+  }
+
+  const verReverse = [];
+  for (let t of transposedArr) {
+    verReverse.push(t.reverse());
+  }
+
+  const verReverseJoin = verReverse.map(ls => ls.join(''));
+  for (let l of verReverseJoin) {
+    if (l.includes(word)) return true;
+  }
+
   return false;
 };
+
+console.log(wordSearch([
+
+  ['D', 'L', 'E', 'F', 'N', 'I', 'E', 'S'],
+
+], 'SEINFELD'));
 
 module.exports = wordSearch;
