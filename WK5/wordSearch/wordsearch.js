@@ -1,8 +1,13 @@
 const wordSearch = (letters, word) => {
+
+  // Search Horizontally Left to Right
+
   const horizontalJoin = letters.map(ls => ls.join(''));
   for (let l of horizontalJoin) {
     if (l.includes(word)) return true;
   }
+
+  // Search Vertically Top to Bottom
 
   const transposedArr = [];
 
@@ -21,6 +26,8 @@ const wordSearch = (letters, word) => {
     if (l.includes(word)) return true;
   }
 
+  // Search Horizontally Right to Left
+
   const horReverse = [];
   for (let l of letters) {
     horReverse.push(l.reverse());
@@ -30,6 +37,9 @@ const wordSearch = (letters, word) => {
   for (let l of horReverseJoin) {
     if (l.includes(word)) return true;
   }
+
+  
+  // Search Vertically Bottom to Top
 
   const verReverse = [];
   for (let t of transposedArr) {
@@ -43,11 +53,5 @@ const wordSearch = (letters, word) => {
 
   return false;
 };
-
-console.log(wordSearch([
-
-  ['D', 'L', 'E', 'F', 'N', 'I', 'E', 'S'],
-
-], 'SEINFELD'));
 
 module.exports = wordSearch;
