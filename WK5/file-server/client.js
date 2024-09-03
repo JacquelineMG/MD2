@@ -14,26 +14,32 @@ conn.on("connect", () => {
 });
 
 
+const filePath = process.argv[2];
 
-// const handleUserInput = key => {
-//   if (key === "\u0003") {
-//     process.exit();
-//   } else {
-//     conn.write(key);
-//   }
-// };
 
-// const setupInput = () => {
-//   const stdin = process.stdin;
-//   stdin.setRawMode(true);
-//   stdin.setEncoding("utf8");
-//   stdin.resume();
+const handleUserInput = key => {
+  if (key === "\u0003") {
+    process.exit();
+  }
+  if (filePath) {
+    if (key === "\u000D") {
+      conn.write(filePath);
+    }
+  }
 
-//   stdin.on("data", handleUserInput);
+};
 
-//   return stdin;
-// };
+const setupInput = () => {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding("utf8");
+  stdin.resume();
 
-// setupInput();
+  stdin.on("data", handleUserInput);
+
+  return stdin;
+};
+
+setupInput();
 
 conn.setEncoding("utf8");
