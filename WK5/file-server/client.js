@@ -14,19 +14,19 @@ conn.on("connect", () => {
 });
 
 
-const filePath = process.argv[2];
+let filePath = process.argv[2];
 
 
-const handleUserInput = key => {
-  if (key === "\u0003") {
+const handleUserInput = data => {
+  if (data === "\u0003") {
     process.exit();
   }
+
   if (filePath) {
-    if (key === "\u000D") {
+    if (data === "\u000D") {
       conn.write(filePath);
     }
   }
-
 };
 
 const setupInput = () => {
