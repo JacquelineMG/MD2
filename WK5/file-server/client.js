@@ -9,12 +9,11 @@ conn.on("data", data => {
   console.log("Server says:", data);
 });
 
-conn.on("connect", () => {
-  conn.write("Hello from client");
-});
-
-
 let filePath = process.argv[2];
+
+conn.on("connect", () => {
+  conn.write(filePath);
+});
 
 
 const handleUserInput = data => {
@@ -22,11 +21,11 @@ const handleUserInput = data => {
     process.exit();
   }
 
-  if (filePath) {
-    if (data === "\u000D") {
-      conn.write(filePath);
-    }
-  }
+  // if (filePath) {
+  //   if (data === "\u000D") {
+  //     conn.write(filePath);
+  //   }
+  // }
 };
 
 const setupInput = () => {
