@@ -17,5 +17,5 @@ console.log(typeof obj, obj);
 delete obj.foo;
 console.log(typeof obj, obj);
 
-const reObj = JSON.stringify(obj)
+const reObj = JSON.stringify(obj);
 console.log(typeof reObj, reObj);
