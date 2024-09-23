@@ -1,23 +1,28 @@
 const needle = require("needle");
 
-const input = process.argv[2];
-const url = `https://api.thecatapi.com/v1/breeds/search?q=${input}`;
 
-needle.get(`${url}`, (error, response, body) => {
-  if (error) {
-    console.log("ERROR:", error);
-  } else {
-    if (body.length === 0) {
-      console.log("Sorry, I have got anything to share about that kind of cat!");
-    }
-    if (body.length > 0) {
-      console.log(`
-      
-${body[0].name}:
+const fetchBreedDescription = (breedName, callback) => {
+  const url = `https://api.thecatapi.com/v1/breeds/search?q=${breedName}`;
+  
+  needle.get(`${url}`, (error, response, body) => {
+    if (error) {
+      callback(error, null);
+    } else {
+      if (body.length === 0) {
+        callback(null, "Sorry, I have got anything to share about that kind of cat!");
+      }
+      if (body.length > 0) {
+        callback(null, `
         
-${body[0].description}
-        `);
+  ${body[0].name}:
+          
+  ${body[0].description}
+          `);
+      }
     }
-  }
+  
+  });
+};
 
-});
+
+module.exports = { fetchBreedDescription };
