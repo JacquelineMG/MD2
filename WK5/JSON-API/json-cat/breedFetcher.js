@@ -12,12 +12,7 @@ const fetchBreedDescription = (breedName, callback) => {
         callback(null, "Sorry, I have got anything to share about that kind of cat!");
       }
       if (body.length > 0) {
-        callback(null, `
-        
-  ${body[0].name}:
-          
-  ${body[0].description}
-          `);
+        callback(null, `${body[0].name}: ${body[0].description}`);
       }
     }
   
@@ -26,3 +21,4 @@ const fetchBreedDescription = (breedName, callback) => {
 
 
 module.exports = { fetchBreedDescription };
+
