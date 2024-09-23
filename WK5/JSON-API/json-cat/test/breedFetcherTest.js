@@ -12,4 +12,15 @@ describe("fetchBreedDescription", () => {
       done();
     });
   });
+
+  it("returns 'Sorry, I haven't got anything to share about that kind of cat!' for breeds it can't find", (done) => {
+    fetchBreedDescription("Dog", (err, desc) => {
+      assert.equal(err, null);
+
+      const expectedDesc = "Sorry, I haven't got anything to share about that kind of cat!";
+      assert.equal(desc.trim(), expectedDesc);
+
+      done();
+    });
+  });
 });
