@@ -5,13 +5,13 @@ fetchMyIP((err, ip) => {
     console.log("ERROR:", err);
     return;
   }
-  
-  fetchCoordsByIP(ip, (err, data) => {
+
+  fetchCoordsByIP(ip, (err, coords) => {
     if (err) {
       console.log("ERROR:", err);
       return;
     }
   
-    console.log(data);
+    console.log(coords);
   });
 });
