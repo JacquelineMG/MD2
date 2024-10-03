@@ -11,7 +11,6 @@ const fetchMyIP = callback => {
     }
       
     const ip = body.ip;
-    console.log(typeof ip);
     callback(null, ip);
   }
   );
