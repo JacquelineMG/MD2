@@ -14,7 +14,11 @@ const fetchMyIP = callback => {
     callback(null, ip);
   }
   );
+};
+
+const fetchCoordsByIP = (ip, callback) => {
+  const url = `http://ipwho.is/${ip}`;
 
 };
 
-module.exports = { fetchMyIP };
+module.exports = { fetchMyIP, fetchCoordsByIP };
