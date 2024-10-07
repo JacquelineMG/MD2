@@ -1,25 +1,32 @@
-const { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes } = require('./iss');
+const { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes, nextISSTimesForMyLocation } = require('./iss');
 
-fetchMyIP((err, ip) => {
+// fetchMyIP((err, ip) => {
+//   if (err) {
+//     console.log("ERROR:", err);
+//     return;
+//   }
+
+//   fetchCoordsByIP(ip, (err, coords) => {
+//     if (err) {
+//       console.log("ERROR:", err);
+//       return;
+//     }
+
+//     fetchISSFlyOverTimes(coords, (err, data) => {
+//       if (err) {
+//         console.log("ERROR:", err);
+//         return;
+//       }
+
+//       console.log(data);
+//     });
+//   });
+// });
+
+nextISSTimesForMyLocation((err, passTimes) => {
   if (err) {
-    console.log("ERROR:", err);
-    return;
+    return console.log("There's been an error!", err);
   }
 
-  fetchCoordsByIP(ip, (err, coords) => {
-    if (err) {
-      console.log("ERROR:", err);
-      return;
-    }
-
-    fetchISSFlyOverTimes(coords, (err, data) => {
-      if (err) {
-        console.log("ERROR:", err);
-        return;
-      }
-
-      console.log(data);
-    });
-  
-  });
+  console.log(passTimes);
 });
