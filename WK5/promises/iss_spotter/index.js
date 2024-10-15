@@ -19,3 +19,5 @@ nextISSTimesForMyLocation((err, passTimes) => {
   printPassTimes(passTimes);
   
 });
+
+module.exports = { printPassTimes };
